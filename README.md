@@ -36,7 +36,7 @@ func main() {
 
 # 自定义日志
 可以通过实现github.com/dream-kzx/dynamicloading/logger的Logger接口，来定制日志
-```json
+```go
 import(
   "github.com/dream-kzx/dynamicloading/logger"
 )
