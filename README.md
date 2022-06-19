@@ -37,26 +37,13 @@ func main() {
 # 自定义日志
 可以通过实现github.com/dream-kzx/dynamicloading/logger的Logger接口，来定制日志
 ```json
-type DefaultLogger struct {
-}
+import(
+  "github.com/dream-kzx/dynamicloading/logger"
+)
 
-func (d DefaultLogger) Debug(msg string) {
-	log.Printf("Debug | %s", msg)
-}
+log := &logger.DefaultLogger{}
 
-func (d DefaultLogger) Info(msg string) {
-	log.Printf("Info  | %s", msg)
-}
-func (d DefaultLogger) Warn(msg string) {
-	log.Printf("Warn  | %s", msg)
-}
-func (d DefaultLogger) Error(msg string) {
-	log.Printf("Error | %s", msg)
-}
-
-logger := &DefaultLogger{}
-
-manager := dynamicloading.New(fileSource, dynamicloading.WithPeriod(2000), dynamicloading.WithLogger(logger))
+manager := dynamicloading.New(fileSource, dynamicloading.WithPeriod(2000), dynamicloading.WithLogger(log))
 ```
 
 # 自定义配置源
