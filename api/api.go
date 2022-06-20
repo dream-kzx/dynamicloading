@@ -1,9 +1,9 @@
 package api
 
 type ConfigSource interface {
-	Read() ([]byte, error)
+	Read() (interface{}, error)
 }
 
 type Observer interface {
-	UpdateConfig(configData []byte)
+	UpdateConfig(configData interface{})
 }

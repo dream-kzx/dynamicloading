@@ -24,11 +24,12 @@ func NewSource(filePath string, onlyChange bool) *Source {
 	}
 }
 
-func (s *Source) Read() ([]byte, error) {
+func (s *Source) Read() (interface{}, error) {
 	file, err := os.OpenFile(s.filePath, os.O_RDONLY, 0666)
 	if err != nil {
 		return nil, fmt.Errorf("open file %s error: %s", s.filePath, err)
 	}
+	defer file.Close()
 
 	var currentTime int64
 	if s.onlyChange {

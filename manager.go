@@ -71,7 +71,7 @@ func (m *ConfigLoadManager) loop() {
 	}
 }
 
-func (m *ConfigLoadManager) notify(data []byte) {
+func (m *ConfigLoadManager) notify(data interface{}) {
 	m.logger.Debug(fmt.Sprintf("notify config: %s", data))
 
 	for i := range m.observers {

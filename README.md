@@ -18,8 +18,8 @@ import (
 type ObserverImpl struct {
 }
 
-func (t *ObserverImpl) UpdateConfig(configData []byte) {
-	fmt.Println(string(configData))
+func (t *ObserverImpl) UpdateConfig(configData interface{}) {
+	fmt.Println(string(configData.([]byte)))
 }
 
 func main() {
@@ -50,7 +50,7 @@ manager := dynamicloading.New(fileSource, dynamicloading.WithPeriod(2000), dynam
 需要实现ConfigSource接口，可以参考source/file/file.go
 ```go
 type ConfigSource interface {
-	Read() ([]byte, error)
+	Read() (interface{}, error)
 }
 ```
 
